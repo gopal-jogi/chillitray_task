@@ -61,13 +61,13 @@ def scrape_yelu(location_url, category, page):
                 company_data['Company_verified_tag'] = None
             
             try:
-                company_data['Company_icon'] = company.find_element(By.TAG_NAME, 'img').get_attribute('data-src')
+                company_data['Company_icon'] = base_url + company.find_element(By.TAG_NAME, 'img').get_attribute('data-src')
             except NoSuchElementException as e:
                 print(f"Error locating company icon element: {e}.")
                 company_data['Company_icon'] = None
             
             try:
-                company_data['Link_to_individual_company_page'] = base_url + company.find_element(By.TAG_NAME, 'a').get_attribute('href')
+                company_data['Link_to_individual_company_page'] = company.find_element(By.TAG_NAME, 'a').get_attribute('href')
             except NoSuchElementException as e:
                 print(f"Error locating company link element: {e}.")
                 company_data['Link_to_individual_company_page'] = None
